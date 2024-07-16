@@ -15,19 +15,20 @@ document.getElementById('calculate').addEventListener('submit', function(event) 
     fetch(webhookUrl, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
     })
     .then(response => {
         if (response.ok) {
             alert('Form submitted successfully!');
         } else {
-            alert('Failed to submit form.');
+            console.error('Failed to submit form:', response.status, response.statusText);
+            alert('Failed to submit form. Check console for details.');
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('Failed to submit form.');
+        alert('Failed to submit form. Check console for details.');
     });
 });
